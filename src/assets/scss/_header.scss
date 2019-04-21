@@ -1,0 +1,84 @@
+@import "src/assets/scss/mixins";
+.header-container {
+    position: relative;
+    padding-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    z-index: 1;
+    &__inner {
+        display: flex;
+        flex-shrink: 0;
+        justify-content: space-evenly;
+        &_width_10 {
+            flex: 1;
+        }
+        &_width_35 {
+            flex: 3.5;
+        }
+        &_width_45 {
+            flex: 4.5;
+        }
+        &_justify_start {
+            justify-content: flex-start;
+        }
+    }
+    &__logo {
+        width: 100px;
+        height: 40px;
+        &_color {
+            fill: var(--primaryColor);
+        }
+    }
+    &__contacts-num {
+        height: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        color: var(--secondaryColor);
+        @include headerFontStyle;
+    }
+    &__language {
+        @include headerFontStyle;
+    }
+    &__actual {
+        height: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__actual-text {
+        @include headerFontStyle;
+    }
+    &__actual-icon {
+        display: block;
+        width: 11px;
+        height: 14px;
+        transform: translate(0, -50%);
+        fill: var(--primaryColor);
+    }
+    &__nav {
+        width: 100%;
+        display: flex;
+        padding: 0;
+        list-style: none;
+    }
+    &__nav-item {
+        margin-left: 20px;
+    }
+    &__link {
+        display: block;
+        color: var(--primaryColor);
+        @include headerFontStyle;
+        &_hovered:hover {
+            text-decoration: none;
+            color: var(--secondaryColor);
+        }
+    }
+    &__consult {
+        margin-left: 30px;
+    }
+    &__consult_hovered:hover .consult__block {
+        display: flex;
+    }
+}

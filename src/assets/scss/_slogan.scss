@@ -1,0 +1,47 @@
+$total-lines: 4;
+$left-offset: 29px;
+$clip-height: 90px;
+$line-height: $clip-height - 5px;
+.slogan-container {
+    color: rgba(255, 255, 255, 1);
+    display: flex;
+    &__words {
+        margin: 0 auto;
+        font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+        font-size: 90px;
+        font-weight: 900;
+        letter-spacing: -2px;
+        text-transform: uppercase;
+        transform: translate3d(0, 0, 0);
+    }
+    &__words-line {
+        height: $clip-height;
+        overflow: hidden;
+        position: relative;
+        &:nth-child(odd) {
+            transform: skew(60deg, -30deg) scaleY(0.66667);
+        }
+        &:nth-child(even) {
+            transform: skew(0deg, -30deg) scaleY(1.33333);
+        }
+        @for $i from 1 through $total-lines+1 {
+            &:nth-child(#{$i}) {
+                left: $left-offset * $i;
+            }
+        }
+        p {
+            height: $clip-height;
+            line-height: $line-height;
+            padding: 0 10px;
+            transition: all 0.4s ease-in-out;
+            transform: translate3d(0, 0, 0);
+            vertical-align: top;
+            white-space: nowrap;
+        }
+    }
+    &__words:hover {
+        p {
+            transform: translate3d(0, -($clip-height + 15px), 0);
+        }
+    }
+}

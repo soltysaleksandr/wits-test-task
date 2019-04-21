@@ -1,0 +1,122 @@
+@keyframes fadeIn {
+    from,
+    60%,
+    75%,
+    90%,
+    to {
+        opacity: 1;
+    }
+    0% {
+        opacity: 0;
+    }
+    60% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+    }
+}
+
+@keyframes jackInTheBox {
+    from {
+        opacity: 0;
+        transform: scale(0.1) rotate(45deg);
+        transform-origin: center bottom;
+    }
+    50% {
+        transform: rotate(-25deg);
+    }
+    70% {
+        transform: rotate(15deg);
+    }
+    90% {
+        transform: rotate(-15deg);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes roleUp {
+    from {
+        height: 60px;
+    }
+    to {
+        height: 0;
+    }
+}
+
+@keyframes rollRight {
+    from {
+        width: 460px;
+    }
+    to {
+        width: 0;
+    }
+}
+
+@keyframes rollPage {
+    from {
+        transform: translate(0%, 50%);
+    }
+    25% {
+        transform: translate(0%, 0%);
+    }
+    50% {
+        transform: translate(0%, -50%);
+    }
+    to {
+        transform: translate(0%, -100%);
+    }
+}
+
+.animate {
+    opacity: 0;
+}
+
+.animate_fade-in {
+    animation-name: fadeIn;
+    animation-duration: 5s;
+    animation-fill-mode: forwards;
+}
+
+.jackInTheBox {
+    opacity: 0;
+    animation-name: jackInTheBox;
+    animation-delay: 4.5s;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.animate-block {
+    position: absolute;
+    transform: translate(0%, 50%);
+    width: 100vw;
+    height: 200vh;
+    z-index: 9999999;
+    &-1 {
+        width: 100%;
+        height: 50%;
+        background: rgba(176, 20, 14, 1);
+    }
+    &-2 {
+        width: 100%;
+        height: 50%;
+        background: rgba(29, 29, 29, 1);
+    }
+    &_active {
+        animation-name: rollPage;
+        animation-duration: 5s;
+        animation-fill-mode: forwards;
+        &_up {
+            animation-direction: alternate-reverse;
+        }
+        &_down {
+            animation-direction: normal;
+        }
+    }
+}

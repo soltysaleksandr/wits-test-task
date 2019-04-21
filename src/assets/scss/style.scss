@@ -1,0 +1,239 @@
+@import "bootstrap/scss/bootstrap-reboot.scss";
+@import "src/assets/scss/animations";
+@import "src/assets/scss/slogan";
+@import "src/assets/scss/header";
+@import "src/assets/scss/mixins";
+:root {
+    --fontStack: "IBM Plex Sans", sans-serif;
+    --secondaryColor: rgba(176, 20, 14, 1);
+    [data-screen="screen-1"] {
+        --bgcolor: rgba(29, 29, 29, 1);
+        --primaryColor: rgba(255, 255, 255, 1);
+        .header-container {
+            &__consult {
+                display: none;
+            }
+            &__nav_justify {
+                justify-content: center;
+            }
+        }
+    }
+    [data-screen="screen-2"] {
+        --bgcolor: rgba(237, 237, 237, 1);
+        --primaryColor: rgba(29, 29, 29, 1);
+        .header-container {
+            &__nav_justify {
+                justify-content: flex-end;
+            }
+        }
+    }
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background: var(--bgcolor);
+    font-family: var(--fontStack);
+    color: var(--primaryColor);
+    overflow-y: hidden;
+}
+
+.page {
+    min-width: 768px;
+    max-width: 1440px;
+    height: 100vh;
+    margin: 0 auto;
+    background: url("/src/assets/svg/bg.svg") no-repeat;
+    padding: 0 15px;
+}
+
+.consult {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--secondaryColor);
+    &__animate-block::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: -335%;
+        height: 60px;
+        width: 270px;
+        background: var(--bgcolor);
+        animation-name: roleUp;
+        animation-delay: 4s;
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+    }
+    &__icon {
+        transform: rotate(135deg);
+        fill: #ffffff;
+        will-change: transform;
+    }
+    &__block {
+        position: absolute;
+        width: 200px;
+        height: 60px;
+        align-items: center;
+        justify-content: center;
+        background: var(--secondaryColor);
+        &_horizontal {
+            right: 60px;
+            display: flex;
+            align-items: center;
+        }
+        &_vertical {
+            top: 216%;
+            transform: rotate(90deg);
+            will-change: transform;
+            display: none;
+            z-index: 100;
+        }
+    }
+    &__text {
+        font-size: 10px;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #fff;
+        &_vertical {
+            transform: rotate(180deg);
+            will-change: transform;
+        }
+    }
+}
+
+.main-container {
+    height: 85%;
+    &__inner_screen_2 {
+        max-width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        transform: translate(100%, 0%);
+    }
+    &__inner_screen_1 {
+        height: 50%;
+        display: flex;
+        flex-direction: column;
+    }
+    &__article {
+        margin-top: 80px;
+    }
+    &__note {
+        margin-top: auto;
+    }
+    &__mailto {
+        margin-top: auto;
+        align-self: flex-end;
+        order: 0;
+    }
+    &__consult {
+        margin-top: 35px;
+        align-self: flex-end;
+        order: 1;
+    }
+    &__motto {
+        margin-top: 35px;
+        align-self: flex-end;
+        order: 2;
+    }
+}
+
+.article-container {
+    &__header {
+        width: 300px;
+        margin-bottom: 18px;
+        font-size: 38px;
+        font-weight: bold;
+        line-height: 40px;
+        letter-spacing: -1px;
+    }
+    &__text {
+        font-size: 16px;
+        font-weight: normal;
+        line-height: 20px;
+    }
+}
+
+.note-container {
+    width: 450px;
+    align-self: center;
+    display: flex;
+    position: relative;
+    &__icon {
+        position: absolute;
+        top: 35px;
+        left: -50px;
+    }
+    &__text {
+        position: relative;
+        padding: 20px 30px;
+        border: 1px solid rgba(29, 29, 29, 0.1);
+        color: var(--secondaryColor);
+        @include headerFontStyle;
+    }
+    &__text-animate-block::after {
+        content: "";
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        display: block;
+        width: 460px;
+        height: 100px;
+        background: var(--bgcolor);
+        animation-name: rollRight;
+        animation-delay: 4s;
+        animation-duration: 3s;
+        animation-fill-mode: forwards;
+    }
+    &__text_triangle {
+        content: "";
+        position: absolute;
+        top: 35px;
+        left: -9px;
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-right: 10px solid rgba(29, 29, 29, 0.1);
+    }
+    &__text_triangle::after {
+        content: "";
+        position: absolute;
+        top: -9px;
+        left: 1px;
+        display: block;
+        width: 0;
+        height: 0;
+        border-top: 9px solid transparent;
+        border-bottom: 9px solid transparent;
+        border-right: 9px solid rgb(237, 237, 237);
+    }
+}
+
+.mailto-container {
+    order: 0;
+    &__header {
+        color: rgba(255, 255, 255, 0.2);
+        @include headerFontStyle;
+    }
+    &__link {
+        font-size: 12px;
+        font-weight: 300;
+        color: var(--primaryColor);
+    }
+}
+
+.motto {
+    font-size: 18px;
+    font-weight: 300;
+    order: 2;
+}
