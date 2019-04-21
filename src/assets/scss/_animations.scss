@@ -80,7 +80,7 @@
 
 .animate_fade-in {
     animation-name: fadeIn;
-    animation-duration: 5s;
+    animation-duration: 3s;
     animation-fill-mode: forwards;
 }
 
@@ -109,8 +109,9 @@
         background: rgba(29, 29, 29, 1);
     }
     &_active {
+        animation: ease-in-out;
         animation-name: rollPage;
-        animation-duration: 5s;
+        animation-duration: 4s;
         animation-fill-mode: forwards;
         &_up {
             animation-direction: alternate-reverse;

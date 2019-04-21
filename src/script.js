@@ -69,7 +69,7 @@ class App {
 
 
     scrollHandle(screen, direction) {
-        const upadateScreenDebounced = debounce(this.updateScreen, 2500);
+        const upadateScreenDebounced = debounce(this.updateScreen, 1400);
 
         document.addEventListener('wheel', (e) => {
             let wheelDirection;
