@@ -5,15 +5,15 @@ import { debounce } from './debounce';
 class App {
     constructor() {
         this.pages = [{
-                name: 'screen-1',
-                link: './src/components/screen-1.html',
-                element: null,
-            },
-            {
-                name: 'screen-2',
-                link: './src/components/screen-2.html',
-                element: null,
-            }
+            name: 'screen-1',
+            link: './src/components/screen-1.html',
+            element: null,
+        },
+        {
+            name: 'screen-2',
+            link: './src/components/screen-2.html',
+            element: null,
+        }
         ]
         this._screen = 'screen-1';
 
@@ -22,7 +22,7 @@ class App {
         this.animatedScrollElem = document.querySelector('.animate-block');
 
         this.updateScreen = this.updateScreen.bind(this);
-
+        this.animate = this.animate.bind(this);
         this.init();
     }
 
@@ -83,14 +83,18 @@ class App {
     }
 
     animate() {
-        this.animatedElems = document.querySelectorAll('.animate');
         this.animatedElems.forEach((item, index) => {
             setTimeout(() => item.classList.add('animate_fade-in'), 300 * index);
+        });
 
-            item.addEventListener('animationend', (e) => {
+    }
+
+    bindAnimationEnd() {
+        this.animatedElems.forEach((item, index) => {
+            item.addEventListener('animationend', (e) => requestAnimationFrame(() => {
                 item.style.opacity = '1';
                 item.classList.remove('animate_fade-in');
-            })
+            }))
         });
     }
 
@@ -103,9 +107,10 @@ class App {
         this.currentElem = this.pages.find(item => item.name === this.screen).element;
         this.mainElem.replaceWith(this.currentElem);
         document.body.dataset.screen = this.screen;
+        this.animatedElems = document.querySelectorAll('.animate');
 
+        this.bindAnimationEnd();
         this.mainElem = document.querySelector('.main-container');
-
         this.animate();
     }
 }
